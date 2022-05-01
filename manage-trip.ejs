@@ -1,0 +1,68 @@
+<!--head will be added from /partial/head file-->
+<%- include('../../partial/head'); %>
+
+    <body>
+        <!--header will be added from /partial/header file-->
+        <%- include('../../partial/header'); %>
+            <div class="container-xl">
+                <div class="table-responsive">
+                    <div class="table-wrapper">
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h2>Manage <b>Trip</b></h2>
+                                </div>
+                                <div class="col-sm-6">
+                                    <!--Refrencing add-trip page and making one button Add New trip-->
+                                    <a href="/add-trip" class="btn btn-success"><i
+                                            class="material-icons">&#xE147;</i>
+                                        <span>Add New Trip</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <!--Labeling the elements in the manage-trip page-->
+                                <tr>
+                                    <th>Destination Id</th>
+                                    <th>Transportation</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                </tr>
+                            </thead>
+                            <!--Rendering the data for each lable-->
+                            <tbody>
+                                <% data?.forEach(function(el) { %>
+                                    <tr>
+                                        <td>
+                                            <%= el.destination_id %>
+                                        </td>
+                                        <td>
+                                            <%= el.transportation %>
+                                        </td>
+                                        <td>
+                                            <%= el.startdate %>
+                                                <%= el.enddate %>
+                                        </td>
+                                        <td>
+                                            <!--Edit destination button-->
+                                            <a href="/edit-trip/<%= el.destination_id %>" class="edit"><i
+                                                    class="material-icons" data-toggle="tooltip"
+                                                    title="Edit">&#xE254;</i></a>
+                                            <!--Delete destination button-->
+                                            <a href="/delete-trip/<%= el.destination_id %>" class="delete"><i
+                                                    class="material-icons" data-toggle="tooltip"
+                                                    title="Delete">&#xE872;</i></a>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    </body>
+    <!--footer will be added from /partial/footer file-->
+    <%- include('../../partial/footer'); %>
+
+        </html>

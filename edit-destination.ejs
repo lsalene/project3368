@@ -1,0 +1,46 @@
+<!--head will be added from /partial/head file-->
+<%- include('../../partial/head'); %>
+
+    <body>
+        <!--header will be added from /partial/header file-->
+        <%- include('../../partial/header'); %>
+            <div class="container-xl">
+                <!--post method /edit-destination will be called from server.js file-->
+                <form action="/edit-destination" method="post">
+                    <div class="modal-header">
+                        <!--page title-->
+                        <h4 class="modal-title">Edit destination</h4>
+                    </div>
+                    <!--Adding labels and text boxes to input new trip name-->
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Id</label>
+                            <input type="text" value="<%= data[0].id %>" class="form-control" id="id" name="id" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" value="<%= data[0].city %>" class="form-control" id="city" name="city" required
+                                readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Country</label>
+                            <input type="text" value="<%= data[0].country %>" class="form-control" id="country"
+                                name="country" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Sightseeing</label>
+                            <input type="text" value="<%=data[0].sightseeing %>" class="form-control" id="sightseeing"
+                            name="sightseeing" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!--cancel buttton will redirect to /destination page-->
+                        <a href="/destination" class="btn btn-default" value="Cancel">Cancel</a>
+                        <!--save button will submit the changes-->
+                        <input type="submit" class="btn btn-success" value="Save">
+                    </div>
+                </form>
+            </div>
+            <!--footer will be added from /partial/footer file-->
+            <%- include('../../partial/footer'); %>
+    </body>

@@ -1,0 +1,51 @@
+<!--head will be added from /partial/head file-->
+<%- include('../../partial/head'); %>
+
+    <body>
+        <!--header will be added from /partial/header file-->
+        <%- include('../../partial/header'); %>
+            <div class="container-xl">
+                <!--post method /edit-trip will be called from server.js file-->
+                <form action="/edit-trip" method="post">
+                    <div class="modal-header">
+                        <!--page title-->
+                        <h4 class="modal-title">Edit Trip</h4>
+                    </div>
+                    <!--Adding labels and text boxes to input new trip -->
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Trip Id</label>
+                            <input type="text" value="<%= data[0].trip_id %>" class="form-control"
+                                id="trip_id" name="trip_id" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Transportation</label>
+                            <input type="text" value="<%= data[0].transportation%>" class="form-control"
+                                id="transportation" name="transportation" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Select Destination</label>
+                            <!--destination name will be disabled since the trip is being updating associated with the destination-->
+                            <select name="destination_id" title="Select destination" class="form-control" disabled>
+                                <option value="">Select Destination</option>
+                                <% destinations.forEach(element=> { %>
+                                    <option value="<%= element.id %>" <%= element.id==data[0].user_id ? 'selected' : '' %>>
+                                        <!--it will show destination city, country, sightseeing based on id-->
+                                        <%= element.city %>
+                                            <%= element.country %>
+                                            <%= element.sightseeing %>
+                                    </option>
+                                    <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!--cancel buttton will redirect to /trip page-->
+                        <a href="/trip" class="btn btn-default" value="Cancel">Cancel</a>
+                        <input type="submit" class="btn btn-success" value="Save">
+                    </div>
+                </form>
+            </div>
+            <!--footer will be added from /partial/footer file-->
+            <%- include('../../partial/footer'); %>
+    </body>

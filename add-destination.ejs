@@ -1,0 +1,40 @@
+<!--head will be added from /partial/head file-->
+<%- include('../../partial/head'); %>
+
+    <body>
+        <!--header will be added from /partial/header file-->
+        <%- include('../../partial/header'); %>
+            <div class="container-xl">
+                <!--calling post method /add-destination from server.js file-->
+                <form action="/add-destination" method="post">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add destination</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>City</label>
+                            <!--using required, forcing destination to add city before saving-->
+                            <input type="text" class="form-control" id="city" name="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Country</label>
+                            <!--using required, forcing destination to add country before saving-->
+                            <input type="text" class="form-control" id="country" name="country" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Sightseeing</label>
+                            <!--using required, forcing destination to add sightseeing before saving-->
+                            <input type="text" class="form-control" id="sightseeing" name="sightseeing" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!--cancel buttton will redirect to /destination page-->
+                        <a href="/destination" class="btn btn-default" value="Cancel">Cancel</a>
+                        <!--save button will submit the changes-->
+                        <input type="submit" class="btn btn-success" value="Save">
+                    </div>
+                </form>
+            </div>
+            <!--footer will be added from /partial/footer file-->
+            <%- include('../../partial/footer'); %>
+    </body>

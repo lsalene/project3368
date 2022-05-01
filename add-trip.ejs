@@ -1,0 +1,47 @@
+<!--head will be added from /partial/head file-->
+<%- include('../../partial/head'); %>
+
+    <body>
+        <!--header will be added from /partial/header file-->
+        <%- include('../../partial/header'); %>
+            <div class="container-xl">
+                <!--calling post method /add-trip from server.js file-->
+                <form action="/add-trip" method="post">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add trip</h4>
+                    </div>
+                    <div class="modal-body">
+                                <div class="form-group">
+                                    <label>Trip Name</label>
+                                    <!--using required, forcing destination to add name before saving-->
+                                    <input type="text" class="form-control" id="trip_name" name="trip_name"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Select Destination</label>
+                                    <!--Selecting destination is required-->
+                                    <select name="destination_id" title="Select Destination" class="form-control" required>
+                                        <option value="">Select Destination</option>
+                                        <% destinations.forEach(element=> { %>
+                                            <option value="<%= element.id %>">
+                                                <!--it will show destination country, city, sightseeing based on id-->
+                                                <%= element.country %>
+                                                <%= element.city %>
+                                                <%= element.sightseeing %>
+
+                                            </option>
+                                            <% }) %>
+                                    </select>
+                                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!--cancel buttton will redirect to /trip page-->
+                        <a href="/trip" class="btn btn-default" value="Cancel">Cancel</a>
+                        <!--save button will submit the changes-->
+                        <input type="submit" class="btn btn-success" value="Save">
+                    </div>
+                </form>
+            </div>
+            <!--footer will be added from /partial/footer file-->
+            <%- include('../../partial/footer'); %>
+    </body>
